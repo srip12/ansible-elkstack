@@ -4,10 +4,14 @@ elastic_host_01 ansible_host=10.0.0.10 ansible_user=vagrant ansible_ssh_common_a
 [logstash]
 logstash_host_01 ansible_host=10.0.0.11 ansible_user=vagrant ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
+[kibana]
+kibana_host_01 ansible_host=10.0.0.11 ansible_user=vagrant ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
 [filebeat]
 filebeat_host_01 ansible_host=10.0.0.12 ansible_user=vagrant ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
 [elk:children]
 elastic
 logstash
+kibana
 filebeat
