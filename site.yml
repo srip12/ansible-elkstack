@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: yes
+  vars_files:
+    - vars/secrets.yml
+    - vars/common.yml
+  roles:
+    - { role: geerlingguy.docker }
+    - { role: docker,        tags: ["docker"] }
+    - { role: elasticsearch, tags: ["elasticsearch"], when: inventory_hostname == 'elastic_host_01' }
+    - { role: kibana,        tags: ["kibana"],        when: inventory_hostname == 'elastic_host_01' }
+    - { role: logstash,      tags: ["logstash"],      when: inventory_hostname == 'logstash_host_01'}
+    - { role: filebeat,      tags: ["filebeat"],      when: inventory_hostname == 'filebeat_host_01'}
+    - { role: nginx,         tags: ["nginx"],         when: inventory_hostname == 'filebeat_host_01'}

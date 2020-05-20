@@ -1,0 +1,6 @@
+---
+# Install a role from Ansible Galaxy.
+# ansible-galaxy role install -r requirements.yml
+roles:
+  - name: geerlingguy.docker
+    version: 2.7.1
