@@ -33,10 +33,15 @@ vagrant scp ssh_key.pub filebeat:~/.ssh/authorized_keys
 vagrant scp ssh_key.pub kibana:~/.ssh/authorized_keys
 ```
 
-### Run playbook:
+### Install docker on remote hosts:
 ```
 # install dependencies for then installation:
 ansible-galaxy role install -r requirements.yml
 
+ansible-playbook -i inventories/dev --private-key=ssh_key docker_install.yml
+```
+
+### Run playbook:
+```
 ansible-playbook -i inventories/dev --private-key=ssh_key site.yml
 ```

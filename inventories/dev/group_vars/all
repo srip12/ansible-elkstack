@@ -7,4 +7,15 @@ elasticsearch_docker_network_drive:  "bridge"
 elasticsearch_cluster_name:   "es-docker-cluster"
 
 elastic_search_url   : "http://<host>:9200"
-elastic_search_hosts : "http://<host>:9200"
+elastic_search_host : "http://<host>:9200"
+
+
+logstash_hostname:     log01
+logstash_image:        'docker.elastic.co/logstash/logstash:7.4.2'
+logstash_conf_dir:     '/usr/share/logstash'
+elastic_password:      ''
+logstash_network_name: 'log_net'
+logstash_log_driver:   'json-file'
+log_max_size:          '10m'
+log_max_file:          '3'
+
