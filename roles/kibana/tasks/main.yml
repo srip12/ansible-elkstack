@@ -1,15 +1,12 @@
-- name: Start kibana container
-  docker_container:
-    name: "{{ kibana_hostname }}"
-    image: "{{ kibana_image }}"
-    env:
-      servername: "{{ server_name }}"
-      ELASTICSEARCH_HOSTS: "http://{{ elasticsearch_hostname }}:9200"
-      ELASTICSEARCH_USERNAME: "kibana"
-      ELASTICSEARCH_PASSWORD: "{{ kibana_password }}"
-    networks:
-    - name: "{{ network_name }}"
-    log_driver: "{{ log_driver }}"
-    log_options:
-      max-size: "{{ log_max_size }}"
-      max-file: "{{ log_max_file }}"
+---
+- name: Copy kibana docker-compose.yml file to server
+  template:
+    src: docker-compose.yml.j2
+    dest: /tmp/docker-compose.yml
+    mode: u=rw,g=r,o=r
+
+- include_tasks: docker-prerequisites.yml
+
+- name: Start kibana
+  docker_compose:
+    project_src: /tmp

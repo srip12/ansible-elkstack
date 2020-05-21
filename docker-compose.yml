@@ -1,0 +1,10 @@
+version: '2.2'
+services:
+  kib01:
+    image: docker.elastic.co/kibana/kibana:7.7.0
+    container_name: kib01
+    ports:
+      - 5601:5601
+    environment:
+      ELASTICSEARCH_URL:   http://dsp4.natlab.research.philips.com:9200
+      ELASTICSEARCH_HOSTS: http://dsp4.natlab.research.philips.com:9200

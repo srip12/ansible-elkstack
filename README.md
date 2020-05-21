@@ -30,6 +30,7 @@ example:
 vagrant scp ssh_key.pub elastic:~/.ssh/authorized_keys
 vagrant scp ssh_key.pub logstash:~/.ssh/authorized_keys
 vagrant scp ssh_key.pub filebeat:~/.ssh/authorized_keys
+vagrant scp ssh_key.pub kibana:~/.ssh/authorized_keys
 ```
 
 ### Run playbook:

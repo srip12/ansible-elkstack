@@ -1,4 +1,0 @@
-- name: Restart filebeat container
-  docker_container:
-    name: "{{ filebeat_hostname }}"
-    restart: true
